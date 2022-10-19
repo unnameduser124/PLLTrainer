@@ -1,0 +1,18 @@
+PLL trainer initial classes.
+
+Solve:
+    - time (solve time)
+    - PLL case
+    - date and time
+    - ID
+
+List of solves:
+    - list
+    - statistics functions
+        - average time overall
+        - average time per PLL case
+        - best solve
+Timer:
+    - start
+    - stop
+    - getTime

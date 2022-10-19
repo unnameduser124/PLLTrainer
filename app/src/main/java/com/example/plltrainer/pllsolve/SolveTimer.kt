@@ -1,0 +1,32 @@
+package com.example.plltrainer.pllsolve
+
+import java.util.*
+
+class SolveTimer(var startTime: Long = -1, var stopTime: Long = -1, var running: Boolean = false) {
+
+    fun startTimer(){
+        startTime = Calendar.getInstance().timeInMillis
+        running = true
+    }
+
+    fun stopTimer(){
+        stopTime = Calendar.getInstance().timeInMillis
+        running = false
+    }
+
+    fun getCurrentTime(): Float{
+        return (millisecondsToHundredth(Calendar.getInstance().timeInMillis) - millisecondsToHundredth(startTime))/100F
+    }
+
+    fun millisecondsToSeconds(timeInMillis: Long): Int{
+        return (timeInMillis/1000).toInt()
+    }
+
+    fun millisecondsToHundredth(timeInMillis: Long): Int{
+        return (timeInMillis/10).toInt()
+    }
+
+    fun getFinalTime(): Float{
+        return (millisecondsToHundredth(stopTime) - millisecondsToHundredth(startTime))/100F
+    }
+}
