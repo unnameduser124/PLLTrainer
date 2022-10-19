@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textSize = "35dp"
+        android:textSize = "35sp"
         android:textAlignment="viewStart"
         android:layout_marginTop="200dp"
         android:layout_marginStart="20dp"/>
@@ -23,4 +23,15 @@
         android:layout_height="match_parent"
         android:id = "@+id/timer_activation_text_view"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id = "@+id/case_setup_text_view"
+        tools:text = "R' U' F' R U R' U' R' F R2 U' R' U' R U R' U R"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

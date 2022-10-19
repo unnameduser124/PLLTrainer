@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.example.plltrainer.databinding.ActivityMainBinding
+import com.example.plltrainer.pllsolve.PLLCase
 import com.example.plltrainer.pllsolve.SolveTimer
 
 class MainActivity : AppCompatActivity() {
@@ -15,10 +16,15 @@ class MainActivity : AppCompatActivity() {
 
         val solveTimer = SolveTimer()
 
+        var scramble = PLLCase.values().toList().random().setup
+        binding.caseSetupTextView.text = scramble
+
        binding.timerActivationTextView.setOnClickListener{
            if(solveTimer.running){
                solveTimer.stopTimer()
                binding.timerTextView.text = "${solveTimer.getFinalTime()}"
+               scramble = PLLCase.values().toList().random().setup
+               binding.caseSetupTextView.text = scramble
            }
            else{
                solveTimer.startTimer()
