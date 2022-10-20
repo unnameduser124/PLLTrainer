@@ -23,5 +23,6 @@ enum class PLLCase(val setup: String) {
     Eperm("R' U L' D2 L U' R L' U R' D2 R U' L"),
     Japerm("L' U2 L U L' U2 R U' L U R'"),
     Jbperm("R U2 R' U' R U2 L' U R' U' L"),
-    Zperm("M U' M2 U' M2 U' M U2 M2")
+    Zperm("M U' M2 U' M2 U' M U2 M2"),
+    Error("No case")
 }

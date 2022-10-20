@@ -29,4 +29,11 @@ class SolveTimer(var startTime: Long = -1, var stopTime: Long = -1, var running:
     fun getFinalTime(): Float{
         return (millisecondsToHundredth(stopTime) - millisecondsToHundredth(startTime))/100F
     }
+
+    fun getSolveObject(pllCase: PLLCase): Solve{
+        if(stopTime != -1L){
+            return Solve(getFinalTime(), pllCase, Calendar.getInstance())
+        }
+        return Solve(-1F, PLLCase.Error, Calendar.getInstance())
+    }
 }

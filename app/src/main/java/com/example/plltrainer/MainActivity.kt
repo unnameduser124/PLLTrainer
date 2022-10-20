@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.example.plltrainer.databinding.ActivityMainBinding
+import com.example.plltrainer.global.roundFloat
+import com.example.plltrainer.global.solves
 import com.example.plltrainer.pllsolve.PLLCase
 import com.example.plltrainer.pllsolve.SolveTimer
 
@@ -16,30 +18,39 @@ class MainActivity : AppCompatActivity() {
 
         val solveTimer = SolveTimer()
 
-        var scramble = PLLCase.values().toList().random().setup
-        binding.caseSetupTextView.text = scramble
+        var scramble = PLLCase.values().toList().random()
+        binding.caseSetupTextView.text = scramble.setup
 
-       binding.timerActivationTextView.setOnClickListener{
-           if(solveTimer.running){
-               solveTimer.stopTimer()
-               binding.timerTextView.text = "${solveTimer.getFinalTime()}"
-               scramble = PLLCase.values().toList().random().setup
-               binding.caseSetupTextView.text = scramble
-           }
-           else{
-               solveTimer.startTimer()
-               val handler = Handler(mainLooper)
+        updateStats()
+        binding.timerActivationTextView.setOnClickListener {
+            if (solveTimer.running) {
+                solveTimer.stopTimer()
+                binding.timerTextView.text = "${solveTimer.getFinalTime()}"
+                val solve = solveTimer.getSolveObject(scramble)
+                solves.addSolve(solve)
+                updateStats()
+                scramble = PLLCase.values().toList().random()
+                binding.caseSetupTextView.text = scramble.setup
+            } else {
+                solveTimer.startTimer()
+                val handler = Handler(mainLooper)
 
-               val runnableCode = object: Runnable {
-                   override fun run() {
-                        binding.timerTextView.text = "${solveTimer.getCurrentTime()}"
-                        if(solveTimer.running){
-                            handler.postDelayed(this, 10)
+                val runnableCode = object : Runnable {
+                    override fun run() {
+                        if (solveTimer.running) {
+                            binding.timerTextView.text = "${solveTimer.getCurrentTime()}"
+                            handler.postDelayed(this, 20)
                         }
-                   }
-               }
-               handler.post(runnableCode)
-           }
-       }
+                    }
+                }
+                handler.post(runnableCode)
+            }
+        }
+    }
+
+    private fun updateStats() {
+        binding.numberOfSolves.text = "${solves.getNumberOfSolves()}"
+        binding.totalTime.text = solves.getTotalTime()
+        binding.globalAverage.text = "${roundFloat(solves.getGlobalAverage(), 100)}"
     }
 }

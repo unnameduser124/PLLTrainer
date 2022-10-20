@@ -34,4 +34,76 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id = "@+id/number_of_solves"
+        tools:text = "1234"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintStart_toStartOf="@id/number_of_solves_label"
+        app:layout_constraintEnd_toEndOf="@id/number_of_solves_label"
+        app:layout_constraintBottom_toTopOf="@id/number_of_solves_label"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id = "@+id/number_of_solves_label"
+        android:text = "@string/nr_of_solves_label"
+        android:textAlignment="center"
+        android:textSize="15sp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id = "@+id/global_average"
+        tools:text = "2.5"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintStart_toStartOf="@id/global_average_label"
+        app:layout_constraintEnd_toEndOf="@id/global_average_label"
+        app:layout_constraintBottom_toTopOf="@id/global_average_label"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id = "@+id/global_average_label"
+        android:text = "@string/mean_label"
+        android:textAlignment="center"
+        android:textSize="15sp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id = "@+id/total_time"
+        tools:text = "2.5"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintStart_toStartOf="@id/total_time_label"
+        app:layout_constraintEnd_toEndOf="@id/total_time_label"
+        app:layout_constraintBottom_toTopOf="@id/total_time_label"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id = "@+id/total_time_label"
+        android:text = "@string/total_time_label"
+        android:textAlignment="center"
+        android:textSize="15sp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintEnd_toEndOf="@id/global_average_label"
+        app:layout_constraintStart_toStartOf="@id/global_average_label"
+        app:layout_constraintBottom_toTopOf="@id/global_average"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
