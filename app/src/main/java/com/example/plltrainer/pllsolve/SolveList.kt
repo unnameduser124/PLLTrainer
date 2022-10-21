@@ -2,7 +2,7 @@ package com.example.plltrainer.pllsolve
 
 import kotlin.math.floor
 
-class SolveList(val solveList: MutableList<Solve>) {
+class SolveList(var solveList: MutableList<Solve>) {
 
     fun addSolve(solve: Solve){
         if(solve.pllCase!=PLLCase.Error){

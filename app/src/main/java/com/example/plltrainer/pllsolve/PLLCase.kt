@@ -24,5 +24,11 @@ enum class PLLCase(val setup: String) {
     Japerm("L' U2 L U L' U2 R U' L U R'"),
     Jbperm("R U2 R' U' R U2 L' U R' U' L"),
     Zperm("M U' M2 U' M2 U' M U2 M2"),
-    Error("No case")
+    Error("No case");
+
+    companion object {
+        fun getPLLCaseFromString(name: String): PLLCase? {
+            return PLLCase.values().toList().firstOrNull { it.toString() == name }
+        }
+    }
 }

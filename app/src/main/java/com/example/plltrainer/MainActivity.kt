@@ -3,6 +3,8 @@ package com.example.plltrainer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import com.example.plltrainer.database.SolveDBService
+import com.example.plltrainer.database.SolvesDB
 import com.example.plltrainer.databinding.ActivityMainBinding
 import com.example.plltrainer.global.roundFloat
 import com.example.plltrainer.global.solves
@@ -16,9 +18,14 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val listOfSolves = SolveDBService(this).loadAllSolvesFromDB()
+        solves.solveList = listOfSolves
+
         val solveTimer = SolveTimer()
 
-        var scramble = PLLCase.values().toList().random()
+        val valuesList = PLLCase.values().toMutableList()
+        valuesList.remove(PLLCase.Error)
+        var scramble = valuesList.random()
         binding.caseSetupTextView.text = scramble.setup
 
         updateStats()
@@ -27,9 +34,13 @@ class MainActivity : AppCompatActivity() {
                 solveTimer.stopTimer()
                 binding.timerTextView.text = "${solveTimer.getFinalTime()}"
                 val solve = solveTimer.getSolveObject(scramble)
+                val newID = SolveDBService(it.context).saveSolveToDB(solve)
+                if(newID>0){
+                   solve.ID = newID
+                }
                 solves.addSolve(solve)
                 updateStats()
-                scramble = PLLCase.values().toList().random()
+                scramble = valuesList.random()
                 binding.caseSetupTextView.text = scramble.setup
             } else {
                 solveTimer.startTimer()
@@ -38,7 +49,8 @@ class MainActivity : AppCompatActivity() {
                 val runnableCode = object : Runnable {
                     override fun run() {
                         if (solveTimer.running) {
-                            binding.timerTextView.text = "${solveTimer.getCurrentTime()}"
+                            val time = solveTimer.getCurrentTime()
+                            binding.timerTextView.text = time
                             handler.postDelayed(this, 20)
                         }
                     }

@@ -14,8 +14,12 @@ class SolveTimer(var startTime: Long = -1, var stopTime: Long = -1, var running:
         running = false
     }
 
-    fun getCurrentTime(): Float{
-        return (millisecondsToHundredth(Calendar.getInstance().timeInMillis) - millisecondsToHundredth(startTime))/100F
+    fun getCurrentTime(): String{
+        var time = ((millisecondsToHundredth(Calendar.getInstance().timeInMillis) - millisecondsToHundredth(startTime))/100F).toString()
+        if(time[time.length-2]=='.') {
+            time+="0"
+        }
+        return time
     }
 
     fun millisecondsToSeconds(timeInMillis: Long): Int{
