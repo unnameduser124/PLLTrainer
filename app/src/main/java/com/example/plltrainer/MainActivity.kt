@@ -26,8 +26,8 @@ class MainActivity : AppCompatActivity() {
         val solveTimer = SolveTimer()
 
         val valuesList = PLLCase.values().toMutableList()
-        valuesList.shuffle()
         valuesList.remove(PLLCase.Error)
+        valuesList.shuffle()
         var iterator = valuesList.iterator()
         var scramble = iterator.next()
         binding.caseSetupTextView.text = scramble.setup
@@ -40,17 +40,15 @@ class MainActivity : AppCompatActivity() {
                 solveTimer.stopTimer()
                 binding.timerTextView.text = "${solveTimer.getFinalTime()}"
                 val solve = solveTimer.getSolveObject(scramble)
-                val newID = SolveDBService(it.context).saveSolveToDB(solve)
-                if(newID>0){
-                   solve.ID = newID
-                }
-                updateStats(solve)
+                SolveDBService(it.context).saveSolveToDB(solve)
+                updateStats()
                 if(iterator.hasNext()){
                     scramble = iterator.next()
                 }
                 else{
                     valuesList.shuffle()
                     iterator = valuesList.iterator()
+                    scramble = iterator.next()
                 }
                 binding.caseSetupTextView.text = scramble.setup
             } else {
@@ -80,7 +78,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateStats(solve: Solve) {
+    private fun updateStats() {
         binding.numberOfSolves.text = "${binding.numberOfSolves.text.toString().toInt()+1}"
         binding.totalTime.text = "${SolveDBService(this).getTotalTime()} min"
         binding.globalAverage.text = "${roundFloat(SolveDBService(this).getGlobalAverage().toFloat(), 100)}"
