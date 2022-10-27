@@ -28,7 +28,7 @@ enum class PLLCase(val setup: String) {
 
     companion object {
         fun getPLLCaseFromString(name: String): PLLCase? {
-            return PLLCase.values().toList().firstOrNull { it.toString() == name }
+            return values().toList().firstOrNull { it.toString() == name }
         }
     }
 }

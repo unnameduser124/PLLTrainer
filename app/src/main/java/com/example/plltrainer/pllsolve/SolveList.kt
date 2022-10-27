@@ -7,6 +7,7 @@ class SolveList(var solveList: MutableList<Solve>) {
     fun addSolve(solve: Solve){
         if(solve.pllCase!=PLLCase.Error){
             solveList.add(solve)
+            solveList.sortByDescending { it.ID }
         }
     }
 
