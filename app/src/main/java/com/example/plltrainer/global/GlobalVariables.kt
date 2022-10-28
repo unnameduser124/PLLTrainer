@@ -1,5 +1,6 @@
 package com.example.plltrainer.global
 
-import com.example.plltrainer.pllsolve.SolveList
+import com.example.plltrainer.pllsolve.PLLCase
 
-val solves = SolveList(mutableListOf())
+val valuesList = PLLCase.values().toMutableList()
+var scrambleIterator = valuesList.iterator()

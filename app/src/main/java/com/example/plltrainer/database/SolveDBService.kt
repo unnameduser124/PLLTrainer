@@ -51,7 +51,9 @@ class SolveDBService(context: Context) : SolvesDB(context) {
                 val solveDateTime = getString(getColumnIndexOrThrow(DATE_TIME_OF_SOLVE))
                 val parsedTime = dtFormat.parse(solveDateTime)
                 val cal = Calendar.getInstance()
-                cal.time = parsedTime
+                if (parsedTime != null) {
+                    cal.time = parsedTime
+                }
                 list.add(Solve(solveTime, com.example.plltrainer.pllsolve.PLLCase.getPLLCaseFromString(PLLCase)!!, cal, ID))
             }
         }
@@ -68,7 +70,7 @@ class SolveDBService(context: Context) : SolvesDB(context) {
         return db.delete(SOLVE_TABLE_NAME, selection, selectionArgs)
     }
 
-    fun caseAverage(): List<CaseAggregate>{
+    fun caseAverageAndSolveNumber(): List<CaseAggregate>{
         val avgCalc = "sum(SolveTime)/count(_id) as MEAN"
         val numOfSolves = "count(_id) as SOLVES_NUM"
 
@@ -123,9 +125,8 @@ class SolveDBService(context: Context) : SolvesDB(context) {
                     }
                 }
             }
+            meanOf50Cursor.close()
         }
-        println(caseAggregateList.size)
-
         return caseAggregateList
     }
 

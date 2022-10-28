@@ -18,8 +18,8 @@ class CaseStatsActivity: AppCompatActivity() {
         binding = CaseStatsActivityLayoutBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val caseAggregateList = SolveDBService(this).caseAverage()
-        val adapter = CaseItemAdapter(caseAggregateList.toMutableList())
+        val caseAggregateList = SolveDBService(this).caseAverageAndSolveNumber()
+        val adapter = CaseItemAdapter(caseAggregateList)
         binding.caseStatsRecyclerView.adapter = adapter
         binding.caseStatsRecyclerView.setHasFixedSize(true)
         val linearLayoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)

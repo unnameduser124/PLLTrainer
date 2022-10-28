@@ -1,17 +1,13 @@
 package com.example.plltrainer.solvelist
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.plltrainer.R
 import com.example.plltrainer.database.SolveDBService
 import com.example.plltrainer.pllsolve.Solve
-import java.text.SimpleDateFormat
-import java.util.*
 
 class SolveItemAdapter (private val dataset: MutableList<Solve>): RecyclerView.Adapter<SolveItemAdapter.ItemViewHolder>(){
 

@@ -1,16 +1,15 @@
 package com.example.plltrainer.stats
 
-import android.util.Half.toFloat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.plltrainer.R
-import com.example.plltrainer.global.roundFloat
+import com.example.plltrainer.global.roundDouble
 import com.example.plltrainer.pllsolve.CaseAggregate
 
-class CaseItemAdapter (private val dataset: MutableList<CaseAggregate>): RecyclerView.Adapter<CaseItemAdapter.ItemViewHolder>(){
+class CaseItemAdapter (private val dataset: List<CaseAggregate>): RecyclerView.Adapter<CaseItemAdapter.ItemViewHolder>(){
 
     class ItemViewHolder(view: View): RecyclerView.ViewHolder(view){
         val globalMean: TextView = view.findViewById(R.id.global_mean_text_view)
@@ -25,9 +24,9 @@ class CaseItemAdapter (private val dataset: MutableList<CaseAggregate>): Recycle
     }
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int){
         val item = dataset[position]
-        holder.globalMean.text = "${roundFloat(item.mean.toFloat(), 100)}"
+        holder.globalMean.text = "${roundDouble(item.mean, 100)}"
         holder.case.text = "${item.case}"
-        holder.meanOf50.text = "${roundFloat(item.meanOf50.toFloat(), 100)}"
+        holder.meanOf50.text = "${roundDouble(item.meanOf50, 100)}"
         holder.numberOfSolves.text = "${item.numberOfSolves}"
     }
 

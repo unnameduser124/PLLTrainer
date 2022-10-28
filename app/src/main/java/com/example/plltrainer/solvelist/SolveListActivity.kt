@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.plltrainer.MainActivity
 import com.example.plltrainer.database.SolveDBService
 import com.example.plltrainer.databinding.SolveListActivityLayoutBinding
-import com.example.plltrainer.global.solves
 
 class SolveListActivity: AppCompatActivity() {
     private lateinit var binding: SolveListActivityLayoutBinding
@@ -20,9 +19,8 @@ class SolveListActivity: AppCompatActivity() {
         setContentView(binding.root)
 
         val listOfSolves = SolveDBService(this).loadAllSolvesFromDB()
-        solves.solveList = listOfSolves
 
-        val adapter = SolveItemAdapter(solves.solveList)
+        val adapter = SolveItemAdapter(listOfSolves)
         binding.solveListRecyclerView.adapter = adapter
         binding.solveListRecyclerView.setHasFixedSize(true)
         val linearLayoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)

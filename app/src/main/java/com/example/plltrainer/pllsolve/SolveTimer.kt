@@ -1,5 +1,6 @@
 package com.example.plltrainer.pllsolve
 
+import com.example.plltrainer.global.roundFloat
 import java.util.*
 
 class SolveTimer(var startTime: Long = -1, var stopTime: Long = -1, var running: Boolean = false) {
@@ -22,16 +23,12 @@ class SolveTimer(var startTime: Long = -1, var stopTime: Long = -1, var running:
         return time
     }
 
-    fun millisecondsToSeconds(timeInMillis: Long): Int{
-        return (timeInMillis/1000).toInt()
-    }
-
-    fun millisecondsToHundredth(timeInMillis: Long): Int{
+    private fun millisecondsToHundredth(timeInMillis: Long): Int{
         return (timeInMillis/10).toInt()
     }
 
     fun getFinalTime(): Float{
-        return (millisecondsToHundredth(stopTime) - millisecondsToHundredth(startTime))/100F
+        return roundFloat((millisecondsToHundredth(stopTime) - millisecondsToHundredth(startTime))/100F, 100)
     }
 
     fun getSolveObject(pllCase: PLLCase): Solve{
