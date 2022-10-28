@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         valuesList.remove(PLLCase.Error)
         valuesList.shuffle()
+        scrambleIterator = valuesList.iterator()
         var scramble = scrambleIterator.next()
 
         binding.caseSetupTextView.text = scramble.setup
