@@ -7,10 +7,7 @@ import android.os.Handler
 import android.view.WindowManager
 import com.example.plltrainer.database.SolveDBService
 import com.example.plltrainer.databinding.ActivityMainBinding
-import com.example.plltrainer.global.roundDouble
-import com.example.plltrainer.global.roundFloat
-import com.example.plltrainer.global.scrambleIterator
-import com.example.plltrainer.global.valuesList
+import com.example.plltrainer.global.*
 import com.example.plltrainer.pllsolve.PLLCase
 import com.example.plltrainer.pllsolve.SolveTimer
 import com.example.plltrainer.solvelist.SolveListActivity
@@ -25,11 +22,25 @@ class MainActivity : AppCompatActivity() {
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
 
         val solveTimer = SolveTimer()
+        var scramble: PLLCase
 
-        valuesList.remove(PLLCase.Error)
-        valuesList.shuffle()
-        scrambleIterator = valuesList.iterator()
-        var scramble = scrambleIterator.next()
+        if(onAppStart){
+            valuesList.remove(PLLCase.Error)
+            valuesList.shuffle()
+            scrambleIterator = valuesList.listIterator()
+            scramble = scrambleIterator.next()
+            onAppStart = false
+        }
+
+        if(scrambleIterator.hasPrevious()){
+            scramble = scrambleIterator.previous()
+            scramble = scrambleIterator.next()
+        }
+        else {
+            scramble = scrambleIterator.next()
+            scramble = scrambleIterator.previous()
+        }
+
 
         binding.caseSetupTextView.text = scramble.setup
         binding.numberOfSolves.text = "${SolveDBService(this).getNumberOfSolves()}"
@@ -49,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 else{
                     valuesList.shuffle()
-                    scrambleIterator = valuesList.iterator()
+                    scrambleIterator = valuesList.listIterator()
                     scramble = scrambleIterator.next()
                 }
                 binding.caseSetupTextView.text = scramble.setup
