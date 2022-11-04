@@ -34,6 +34,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id = "@+id/settings_button"
+        android:background="@drawable/ic_outline_settings_24"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/case_setup_text_view"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -54,9 +65,9 @@
         android:textAlignment="center"
         android:textSize="15sp"
         android:layout_marginBottom="20dp"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="30dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/solves_list_button"
+        app:layout_constraintBottom_toTopOf="@id/solves_list"
         />
     <TextView
         android:layout_width="wrap_content"
@@ -80,7 +91,7 @@
         android:layout_marginBottom="20dp"
         android:layout_marginEnd="50dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/solves_list_button"
+        app:layout_constraintBottom_toTopOf="@id/solves_list"
         />
     <TextView
         android:layout_width="wrap_content"
@@ -106,25 +117,26 @@
         app:layout_constraintStart_toStartOf="@id/global_average_label"
         app:layout_constraintBottom_toTopOf="@id/global_average"
         />
-    <Button
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id = "@+id/solves_list_button"
+        android:id = "@+id/solves_list"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginBottom="20dp"
-        android:layout_marginStart="20dp"
+        app:layout_constraintEnd_toEndOf="@id/number_of_solves"
+        app:layout_constraintStart_toStartOf="@id/number_of_solves"
+        android:layout_marginBottom="40dp"
         android:text = "@string/solve_history_button_label"
         android:background="#00ffffff"/>
 
-    <Button
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id = "@+id/per_case_stats_button"
+        android:id = "@+id/per_case_stats"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="20dp"
-        android:text = "case stats"
+        app:layout_constraintEnd_toEndOf="@id/global_average_label"
+        app:layout_constraintStart_toStartOf="@id/global_average_label"
+        android:layout_marginBottom="40dp"
+        android:text = "@string/case_stats_label"
         android:background="#00ffffff"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

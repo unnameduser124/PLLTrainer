@@ -14,7 +14,7 @@ import com.example.plltrainer.solvelist.SolveListActivity
 import com.example.plltrainer.stats.CaseStatsActivity
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: com.example.plltrainer.databinding.ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -83,12 +83,18 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        binding.solvesListButton.setOnClickListener {
+        binding.solvesList.setOnClickListener {
             val intent = Intent(this, SolveListActivity::class.java)
             startActivity(intent)
         }
-        binding.perCaseStatsButton.setOnClickListener{
+
+        binding.perCaseStats.setOnClickListener{
             val intent = Intent(this, CaseStatsActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.settingsButton.setOnClickListener{
+            val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
         }
     }

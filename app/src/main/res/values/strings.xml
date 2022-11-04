@@ -4,10 +4,15 @@
     <string name="mean_label">mean</string>
     <string name="total_time_label">total time</string>
     <string name="timer_text_view_default">0.0</string>
-    <string name="solve_history_button_label">solve history</string>
+    <string name="solve_history_button_label">SOLVE HISTORY</string>
     <string name="delete_label">delete</string>
     <string name="nr_of_solves_case_stats_label">solves</string>
     <string name="mo50_label">mo50</string>
     <string name="mean_case_stats_label">mean</string>
     <string name="case_stats_case_label">Case</string>
+    <string name="cancel_label">Cancel</string>
+    <string name="confirm_label">Confirm</string>
+    <string name="are_you_sure_label">Are you sure?</string>
+    <string name="clear_history_label">Clear history</string>
+    <string name="case_stats_label">CASE STATS</string>
 </resources>

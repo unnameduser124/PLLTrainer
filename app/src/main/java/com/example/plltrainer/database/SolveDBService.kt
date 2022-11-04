@@ -204,4 +204,10 @@ class SolveDBService(context: Context) : SolvesDB(context) {
         }
         return number
     }
+
+    fun clearSolveHistory(){
+        val db = this.writableDatabase
+
+        db.execSQL("DELETE FROM $SOLVE_TABLE_NAME")
+    }
 }

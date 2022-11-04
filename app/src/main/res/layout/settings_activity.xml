@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id = "@+id/clear_all_data_button"
@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf = "parent"
         app:layout_constraintTop_toTopOf = "parent"
         android:layout_margin = "10dp"
-        android:text = "Clear history"
+        android:text = "@string/clear_history_label"
         android:textSize = "20sp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
